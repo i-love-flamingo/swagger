@@ -21,19 +21,24 @@ func main() {
 
 Make sure that your swagger definition is located under `docs/swagger.json`
 
-After starting your application please open 
-
-http://localhost:3322/api-console
+After starting your application please open the path "/api-console/". 
+E.g.: http://localhost:3322/api-console/
 
 ## Generating swagger file
 
 For generating we recommend to use https://github.com/swaggo/swag
 
 ```go
-swag init --parseDependency=1 -g main.go
+swag init --parseDependency=1 --generalInfo=main.go
 ```
 
 This will parse the defined doc comments and generate a file `docs/swagger.json`
+
+An even better way is to add the following line to your project main file:
+
+```go
+//go:generate go run github.com/swaggo/swag/cmd/swag init --parseDependency=1 --generalInfo=main.go
+```
 
 
 

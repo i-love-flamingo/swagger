@@ -16,14 +16,13 @@ func (s *Module) Configure(injector *dingo.Injector) {
 	web.BindRoutes(injector, new(routes))
 }
 
-type routes struct {}
+type routes struct {
+}
 
 func (r *routes) Routes(registry *web.RouterRegistry) {
 	registry.HandleAny("swag.api", web.WrapHTTPHandler(http.StripPrefix("/api-console", assetHandler())))
 	//registry.HandleAny("swag.api", web.WrapHTTPHandler(assetHandler()))
 	registry.Route("/api-console/*n", "swag.api")
-	registry.Route("/api-console", "swag.api")
-
 	registry.HandleAny("swag.api.swagger", web.WrapHTTPHandler(swaggerDefHandler()))
 	registry.Route("/api/swagger.json", "swag.api.swagger")
 }
