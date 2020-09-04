@@ -4,13 +4,16 @@ This module adds routes that serve the swagger ui (https://swagger.io/tools/swag
 
 ## Installation
 
-Add the module to your Flaming bootstrap:
+Add the module and the swagger project description to your Flaming bootstrap:
 
 ```go
 package main
 
 import "flamingo.me/swagger"
 
+// @title My Project
+// @version 1.0
+// @BasePath /api
 func main() {
 	flamingo.App([]dingo.Module{
 		...
